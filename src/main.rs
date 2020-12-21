@@ -57,56 +57,57 @@ fn main() {
     println!("{}", GARF_TOP);
     let lines = parse_input_to_vector();
     for line in &lines {
-        println!("                         `m.. {} -m`", line);
+        println!("` m.. {} -m`", line);
     }
 
     println!("{}", GARF_BOTTOM);
 }
 
-const GARF_TOP: &str = "                                        ./sdNMNhooo/.          ./oo+smmdhs/`                                  
-                                      -hMMMMMmNMNs+:/oo-    -os/..+shdMMMMMNs`                                
-                                     -NMMM//md`:smsos-`/s/-y+` -sshmyymy:oNNMo                                
-                                     yMMsdd .dy  `/s.+s. :o` -s++h/`oy..hy`ymh                                
-                                     dmMy.ms `+:   `- .y/  `so`o/. -/ `d+ :s:h                                
-                                so.  s+sm .s: .+ooo++oo+y+-y/+oo+++oo::: -h`o+  .sd:                          
-                               `:oys-.d`s-  :s+.`     `-sNNy/.`     `:s/ o` m`-oso//-                         
-                              -yhysos/sy`--s/`           ys`           /y- ohy++syhho-                        
-                             -so+++/:ydh/os`             s/             .y+yhoh:--.://                        
-                                   /hhyoh+               s/              `yssy+d+//-                          
-                                -/sdy::s+                s/               `h+y+-..:+y/                        
-                              /o/..-:+yy                 s/                .N:-.  - `oo                       
-                             :y`:` `-.N.                 s/                 oy   ` `.`m                       
-                             +h.``:. oy                  s/                 `N.:oy  `ys                       
-                             /Mo.:ds d:                  s/                  h/ :d/+yd`                       
-                            `h///om. N`                  s/                  ss  :d.`h-                       
-                            ym/` s+  N                   s/                  oy   so -h`                      
-                           /hdds-h   m`                  s/                  ss   .m`+hs                      
-                          `doys:s+   yo                  s/                 .m.    myhdh:                     
-                          /s+-` h/   .m:             `y- s/ `y-            .h:    `m/sy+d                     
-                          hs/   /s    -h+`           :Ms s/ /Mo           :h-     +s `-/h-                    
-                          ms:o` `y:    `+s/`         `y- s/ `y-         -sy.     -h`   ++o                    
-                         .dy-m:+ `s/`    `/so:.`      -+oso++/-`   `.-:os/      /y.  -.d/y                    
-                         :yy-m/+   yh:`     ./++o+++osh.     .yyo+++/:-`     `:yh`  +++h+d                    
-                         :yy:d``   ossy+-`          `-h+-...-+h:          `-+yoos   m:sh/h                    
-                         -ho/.     o+ ./syyo/:-....--:+hhhhymh+:-...--:+oymo:` +o   ::sd+s                    
-                         `m:o      +o     yo-:::/+N::-.` oo `-:+osddsso/:.N    s+    .-dy/
-                         `m:o      +s     y:     .m      oo       y+      N    y/    .-dy/
-                         `m:o      /s     h:     .m      oo       y+      N   `h-    .-dy/
-                         `m:o        do+-d/:``   .d      s+       h+ `    Ndasd      .-mm/
-                         `m..               sdfsf.d      s+       h+dfdsdf           .-mm/
-                         `m..                      /:::::yo::::::/                    .-m/
-                         `m..                                                         .-m/";
+const GARF_TOP: &str = "                ./sdNMNhooo/.          ./oo+smmdhs/`
+              -hMMMMMmNMNs+:/oo-    -os/..+shdMMMMMNs`
+             -NMMM//md`:smsos-`/s/-y+` -sshmyymy:oNNMo
+             yMMsdd .dy  `/s.+s. :o` -s++h/`oy..hy`ymh
+             dmMy.ms `+:   `- .y/  `so`o/. -/ `d+ :s:h
+        so.  s+sm .s: .+ooo++oo+y+-y/+oo+++oo::: -h`o+  .sd:
+       `:oys-.d`s-  :s+.`     `-sNNy/.`     `:s/ o` m`-oso//-
+      -yhysos/sy`--s/`           ys`           /y- ohy++syhho-
+     -so+++/:ydh/os`             s/             .y+yhoh:--.://
+           /hhyoh+               s/              `yssy+d+//-  
+        -/sdy::s+                s/               `h+y+-..:+y/
+      /o/..-:+yy                 s/                .N:-.  - `oo                       
+     :y`:` `-.N.                 s/                 oy   ` `.`m                       
+     +h.``:. oy                  s/                 `N.:oy  `ys                       
+     /Mo.:ds d:                  s/                  h/ :d/+yd`                       
+    `h///om. N`                  s/                  ss  :d.`h-                       
+    ym/` s+  N                   s/                  oy   so -h`                      
+   /hdds-h   m`                  s/                  ss   .m`+hs                      
+  `doys:s+   yo                  s/                 .m.    myhdh:                     
+  /s+-` h/   .m:             `y- s/ `y-            .h:    `m/sy+d                     
+  hs/   /s    -h+`           :Ms s/ /Mo           :h-     +s `-/h-                    
+  ms:o` `y:    `+s/`         `y- s/ `y-         -sy.     -h`   ++o                    
+ .dy-m:+ `s/`    `/so:.`      -+oso++/-`   `.-:os/      /y.  -.d/y                    
+ :yy-m/+   yh:`     ./++o+++osh.     .yyo+++/:-`     `:yh`  +++h+d                    
+ :yy:d``   ossy+-`          `-h+-...-+h:          `-+yoos   m:sh/h                    
+ -ho/.     o+ ./syyo/:-....--:+hhhhymh+:-...--:+oymo:` +o   ::sd+s                    
+ `m:o      +o     yo-:::/+N::-.` oo `-:+osddsso/:.N    s+    .-dy/
+ `m:o      +s     y:     .m      oo       y+      N    y/    .-dy/
+ `m:o      /s     h:     .m      oo       y+      N   `h-    .-dy/
+ `m:o        do+-d/:``   .d      s+       h+ `    Ndasd      .-mm/
+ `m..               sdfsf.d      s+       h+dfdsdf           .-mm/
+ `m..                      /:::::yo::::::/                    .-m/
+ `m..                                                         .-m/";
 
-const GARF_BOTTOM: &str = "                          m..                                                         `-m`                    
-                          o+y.``                                                     ../y                     
-                          .dy:+/o  :do+/:                                -N/+++m. ``oo+d.                     
-                           ssy:ys/ -y  .-:mo+++o+om             /+my+++//:N.   m` h+sdso                      
-                           `dsoo+- .h     m.     -d..----yo---..``m:      N   `N .shyoh`                      
-                            -hoo:. .h     N`     .d      s/       M:      N`  `m  +ysy.                       
-                             :yos  .m     N      :d      s/       M.      N. `:h  .y+`                        
-                              .ys` `yo+:.`N      :h      s/      `M-  ``.:mso+/-`+s.                          
-                               `sh+.  `-/+sooo+/:+h.`````s/``..-:+Nsoo++/-`  `./do                            
-                                 .+oo:.``  `.:.::/+++ooooo++//:-.`  `:y+./oooo/.     
-                                     +0oo                                ooo/ 
-                                        ::oooes                        sdfs:
-                                            garfsaygarfsaygarfsaygarfsay";
+const GARF_BOTTOM: &str =
+    "  m..                                                         `-m`                    
+  o+y.``                                                     ../y                     
+  .dy:+/o  :do+/:                                -N/+++m. ``oo+d.                     
+   ssy:ys/ -y  .-:mo+++o+om             /+my+++//:N.   m` h+sdso                      
+   `dsoo+- .h     m.     -d..----yo---..``m:      N   `N .shyoh`                      
+    -hoo:. .h     N`     .d      s/       M:      N`  `m  +ysy.                       
+     :yos  .m     N      :d      s/       M.      N. `:h  .y+`
+      .ys` `yo+:.`N      :h      s/      `M-  ``.:mso+/-`+s.  
+       `sh+.  `-/+sooo+/:+h.`````s/``..-:+Nsoo++/-`  `./do    
+         .+oo:.``  `.:.::/+++ooooo++//:-.`  `:y+./oooo/.     
+             +0oo                                ooo/ 
+                ::oooe                        ssdfs:
+                    garfsaygarfsaygarfsaygarfsay";
