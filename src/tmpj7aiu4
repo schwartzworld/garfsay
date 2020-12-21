@@ -1,0 +1,29 @@
+use std::io;
+
+const MAX_WIDTH: usize = 30;
+
+fn break_up_input(input: String) -> String {
+    if input.len() <= MAX_WIDTH {
+        return input;
+    }
+    let bytes = s.as_bytes()
+    for (i, &item) in bytes.iter().enumerate() {
+        println!("{}, {}", i, item);
+    }
+    i
+}
+
+fn main() {
+    loop {
+        let mut input = String::new();
+        io::stdin()
+            .read_line(&mut input)
+            .expect("failed to read from pipe");
+        input = input.trim().to_string();
+        if input == "" {
+            break;
+        }
+        let input = break_up_input(input);
+        println!("Pipe output: {:?}", input);
+    }
+}

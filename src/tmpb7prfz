@@ -1,0 +1,75 @@
+use std::io;
+
+const MAX_WIDTH: usize = 60;
+fn pad_to_max(line: &str) -> String {
+    let mut x = line.clone().to_string();
+    while x.len() <= MAX_WIDTH {
+        x.push_str(" ");
+    }
+    x
+}
+
+fn main() {
+    let mut lines: Vec<String> = vec![];
+    loop {
+        let mut input = String::new();
+        io::stdin()
+            .read_line(&mut input)
+            .expect("failed to read from pipe");
+        input = input.trim().to_string();
+        if input == "" {
+            break;
+        }
+        let input = input.split_whitespace();
+
+        let mut line = String::from("");
+        println!("--------------------------------------------------------------------");
+        for word in input {
+            if word.len() + line.len() <= MAX_WIDTH {
+                line = line.to_owned() + " " + word;
+            } else {
+                lines.push(pad_to_max(&line));
+                line = String::from(word);
+            }
+        }
+        if line.len() > 0 {
+            lines.push(pad_to_max(&line));
+        }
+
+        for line in &lines {
+            println!("|   {}   |", line);
+        }
+    }
+    println!("{}", GARF);
+}
+
+const GARF_TOP: &str = "
+                                        ./sdNMNhooo/.          ./oo+smmdhs/`                                  
+                                      -hMMMMMmNMNs+:/oo-    -os/..+shdMMMMMNs`                                
+                                     -NMMM//md`:smsos-`/s/-y+` -sshmyymy:oNNMo                                
+                                     yMMsdd .dy  `/s.+s. :o` -s++h/`oy..hy`ymh                                
+                                     dmMy.ms `+:   `- .y/  `so`o/. -/ `d+ :s:h                                
+                                so.  s+sm .s: .+ooo++oo+y+-y/+oo+++oo::: -h`o+  .sd:                          
+                               `:oys-.d`s-  :s+.`     `-sNNy/.`     `:s/ o` m`-oso//-                         
+                              -yhysos/sy`--s/`           ys`           /y- ohy++syhho-                        
+                             -so+++/:ydh/os`             s/             .y+yhoh:--.://                        
+                                   /hhyoh+               s/              `yssy+d+//-                          
+                                -/sdy::s+                s/               `h+y+-..:+y/                        
+                              /o/..-:+yy                 s/                .N:-.  - `oo                       
+                             :y`:` `-.N.                 s/                 oy   ` `.`m                       
+                             +h.``:. oy                  s/                 `N.:oy  `ys                       
+                             /Mo.:ds d:                  s/                  h/ :d/+yd`                       
+                            `h///om. N`                  s/                  ss  :d.`h-                       
+                            ym/` s+  N                   s/                  oy   so -h`                      
+                           /hdds-h   m`                  s/                  ss   .m`+hs                      
+                          `doys:s+   yo                  s/                 .m.    myhdh:                     
+                          /s+-` h/   .m:             `y- s/ `y-            .h:    `m/sy+d                     
+                          hs/   /s    -h+`           :Ms s/ /Mo           :h-     +s `-/h-                    
+                          ms:o` `y:    `+s/`         `y- s/ `y-         -sy.     -h`   ++o                    
+                         .dy-m:+ `s/`    `/so:.`      -+oso++/-`   `.-:os/      /y.  -.d/y                    
+                         :yy-m/+   yh:`     ./++o+++osh.     .yyo+++/:-`     `:yh`  +++h+d                    
+                         :yy:d``   ossy+-`          `-h+-...-+h:          `-+yoos   m:sh/h                    
+                         -ho/.     o+ ./syyo/:-....--:+hhhhymh+:-...--:+oymo:` +o   ::sd+s                    
+                         `m:o      +o     yo-:::/+N::-.` oo `-:+osddsso/:.N    s+    .-dy/                    ";
+
+                         c

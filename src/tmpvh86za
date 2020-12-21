@@ -1,0 +1,12 @@
+use std::io::{self, BufRead};
+
+const MAX_WIDTH: = 30;
+
+fn main() {
+    let stdin = io::stdin();
+    println!(stdin.lock().lines())
+    for line in stdin.lock().lines() {
+        let line = line.expect("Could not read line from standard in");
+        println!("{}", line);
+    }
+}

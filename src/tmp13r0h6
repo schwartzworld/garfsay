@@ -1,0 +1,19 @@
+use std::io;
+
+const MAX_WIDTH: i32 = 30;
+
+fn breakUp
+
+fn main() {
+    loop {
+        let mut input = String::new();
+        io::stdin()
+            .read_line(&mut input)
+            .expect("failed to read from pipe");
+        input = input.trim().to_string();
+        if input == "" {
+            break;
+        }
+        println!("Pipe output: {}", input);
+    }
+}

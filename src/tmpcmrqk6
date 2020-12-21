@@ -1,0 +1,32 @@
+use std::io;
+
+const MAX_WIDTH: usize = 30;
+
+fn main() {
+    let mut lines: Vec<String> = vec![];
+    loop {
+        let mut input = String::new();
+        io::stdin()
+            .read_line(&mut input)
+            .expect("failed to read from pipe");
+        input = input.trim().to_string();
+        if input == "" {
+            break;
+        }
+        let input = input.split_whitespace();
+
+        let mut line = String::from("");
+        for word in input {
+            if word.len() + line.len() <= MAX_WIDTH {
+                line = line.to_owned() + " " + word;
+            } else {
+                lines.push(line.clone());
+                line = String::from(word);
+            }
+        }
+        if line.len() > 0 {
+        	lines
+        }
+        println!("{:#?}", lines[1])
+    }
+}

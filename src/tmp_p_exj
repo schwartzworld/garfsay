@@ -1,0 +1,23 @@
+use std::io;
+
+const MAX_WIDTH: usize = 30;
+
+fn main() {
+    let lines = Vec::new();
+    loop {
+        let mut input = String::new();
+        io::stdin()
+            .read_line(&mut input)
+            .expect("failed to read from pipe");
+        input = input.trim().to_string();
+        if input == "" {
+            break;
+        }
+        let input = input.split_whitespace();
+
+        let line = "";
+        for word in input {
+           	for ch
+        }
+    }
+}
