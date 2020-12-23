@@ -18,12 +18,12 @@ fn parse_input_to_vector() -> Vec<String> {
             break;
         }
 
-        lines.extend(input_to_center_aligned_vectors(&input));
+        lines.extend(input_to_center_aligned_strings(&input));
     }
     lines
 }
 
-fn input_to_center_aligned_vectors(input: &str) -> Vec<String> {
+fn input_to_center_aligned_strings(input: &str) -> Vec<String> {
     let mut lines: Vec<String> = vec![];
  
     let input = input.replace("\n", &format!(" {} ", NEWLINE));
@@ -67,7 +67,7 @@ fn parse_arguments_to_vector() -> Vec<String> {
     if args.len() != 2 {
         return Vec::<String>::new();
     } else {
-        return input_to_center_aligned_vectors(&args[1]);
+        return input_to_center_aligned_strings(&args[1]);
     }
 }
 
