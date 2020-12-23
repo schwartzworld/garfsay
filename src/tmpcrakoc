@@ -19,11 +19,7 @@ impl Input {
         Input { lines }
     }
 
-    fn to_stdout(self) {
-        println!("{}", GARF_TOP);
-        println!("{}", self);
-        println!("{}", GARF_BOTTOM);
-    }
+    fn to_stdout(self)
 }
 
 impl fmt::Display for Input {
@@ -31,7 +27,7 @@ impl fmt::Display for Input {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let lines = self.lines.join(" -m`\n`m.. ");
 
-        write!(f, " `m.. {} -m`", lines)
+        write!(f, " `m.. {} -m`\n", lines)
     }
 }
 
@@ -104,12 +100,15 @@ fn parse_arguments_to_vector() -> Vec<String> {
 }
 
 fn main() {
+    println!("{}", GARF_TOP);
+
     let input = Input::create();
     input.to_stdout();
+
+    println!("{}", GARF_BOTTOM);
 }
 
-const GARF_TOP: &str = "
-                ./sdNMNhooo/.          ./oo+smmdhs/`
+const GARF_TOP: &str = "                ./sdNMNhooo/.          ./oo+smmdhs/`
               -hMMMMMmNMNs+:/oo-    -os/..+shdMMMMMNs`
              -NMMM//md`:smsos-`/s/-y+` -sshmyymy:oNNMo
              yMMsdd .dy  `/s.+s. :o` -s++h/`oy..hy`ymh
@@ -156,5 +155,4 @@ const GARF_BOTTOM: &str =
          .+oo:.``  `.:.::/+++ooooo++//:-.`  `:y+./oooo/.     
              +0oo                                ooo/ 
                 ::oooe                        ssdfs:
-                    garfsaygarfsaygarfsaygarfsay
-";
+                    garfsaygarfsaygarfsaygarfsay";

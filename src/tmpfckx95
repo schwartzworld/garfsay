@@ -1,42 +1,25 @@
 use std::env;
-use std::fmt;
 use std::io;
 use std::io::Read;
 
 const MAX_WIDTH: usize = 55;
 const NEWLINE: &str = "%0D%0A";
 
-struct Input {
+struct InputString {
     lines: Vec<String>,
 }
 
-impl Input {
-    fn create() -> Input {
-        let mut lines = parse_arguments_to_vector();
-        if lines.len() == 0 {
-            lines = parse_input_to_vector();
-        }
-        Input { lines }
+impl InputString {
+  fn create() {
+    let args_input_string = parse_arguments_to_vector();
+    match args_input_string {
+      Some(lines) => I
     }
-
-    fn to_stdout(self) {
-        println!("{}", GARF_TOP);
-        println!("{}", self);
-        println!("{}", GARF_BOTTOM);
-    }
+  }
 }
 
-impl fmt::Display for Input {
-    // This trait requires `fmt` with this exact signature.
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let lines = self.lines.join(" -m`\n`m.. ");
-
-        write!(f, " `m.. {} -m`", lines)
-    }
-}
-
-fn parse_input_to_vector() -> Vec<String> {
-    let mut lines: Vec<String> = vec![];
+fn parse_input_to_input_string() -> Option<InputString> {
+    let mut lines = vec![];
     loop {
         let mut input = String::new();
         io::stdin()
@@ -47,11 +30,25 @@ fn parse_input_to_vector() -> Vec<String> {
         if input == "" {
             break;
         }
-
         lines.extend(input_to_center_aligned_strings(&input));
     }
+    if lines.len() == 0 {
+        return None;
+    };
+    Some(InputString { lines })
+}
 
-    lines
+fn parse_arguments_to_vector() -> Option<InputString> {
+    let args: Vec<String> = env::args().collect();
+
+    if args.len() < 2 {
+        return None;
+    } else {
+        let input = args[1..].join(" ");
+        Some(InputString {
+            lines: input_to_center_aligned_strings(&input),
+        })
+    }
 }
 
 fn input_to_center_aligned_strings(input: &str) -> Vec<String> {
@@ -92,24 +89,22 @@ fn center_align(line: &str) -> String {
     x
 }
 
-fn parse_arguments_to_vector() -> Vec<String> {
-    let args: Vec<String> = env::args().collect();
-
-    if args.len() < 2 {
-        return Vec::<String>::new();
-    } else {
-        let input = args[1..].join(" ");
-        return input_to_center_aligned_strings(&input);
-    }
-}
-
 fn main() {
-    let input = Input::create();
-    input.to_stdout();
+    println!("{}", GARF_TOP);
+
+    let mut lines = parse_arguments_to_vector().lines;
+    if lines.len() == 0 {
+        lines = parse_input_to_input_string().lines;
+    }
+
+    for line in &lines {
+        println!("` m.. {} -m`", line);
+    }
+
+    println!("{}", GARF_BOTTOM);
 }
 
-const GARF_TOP: &str = "
-                ./sdNMNhooo/.          ./oo+smmdhs/`
+const GARF_TOP: &str = "                ./sdNMNhooo/.          ./oo+smmdhs/`
               -hMMMMMmNMNs+:/oo-    -os/..+shdMMMMMNs`
              -NMMM//md`:smsos-`/s/-y+` -sshmyymy:oNNMo
              yMMsdd .dy  `/s.+s. :o` -s++h/`oy..hy`ymh
@@ -156,5 +151,4 @@ const GARF_BOTTOM: &str =
          .+oo:.``  `.:.::/+++ooooo++//:-.`  `:y+./oooo/.     
              +0oo                                ooo/ 
                 ::oooe                        ssdfs:
-                    garfsaygarfsaygarfsaygarfsay
-";
+                    garfsaygarfsaygarfsaygarfsay";

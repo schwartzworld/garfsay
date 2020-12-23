@@ -1,40 +1,11 @@
 use std::env;
-use std::fmt;
 use std::io;
 use std::io::Read;
 
 const MAX_WIDTH: usize = 55;
 const NEWLINE: &str = "%0D%0A";
 
-struct Input {
-    lines: Vec<String>,
-}
-
-impl Input {
-    fn create() -> Input {
-        let mut lines = parse_arguments_to_vector();
-        if lines.len() == 0 {
-            lines = parse_input_to_vector();
-        }
-        Input { lines }
-    }
-
-    fn to_stdout(self) {
-        println!("{}", GARF_TOP);
-        println!("{}", self);
-        println!("{}", GARF_BOTTOM);
-    }
-}
-
-impl fmt::Display for Input {
-    // This trait requires `fmt` with this exact signature.
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let lines = self.lines.join(" -m`\n`m.. ");
-
-        write!(f, " `m.. {} -m`", lines)
-    }
-}
-
+struct InputTh
 fn parse_input_to_vector() -> Vec<String> {
     let mut lines: Vec<String> = vec![];
     loop {
@@ -50,13 +21,12 @@ fn parse_input_to_vector() -> Vec<String> {
 
         lines.extend(input_to_center_aligned_strings(&input));
     }
-
     lines
 }
 
 fn input_to_center_aligned_strings(input: &str) -> Vec<String> {
     let mut lines: Vec<String> = vec![];
-
+ 
     let input = input.replace("\n", &format!(" {} ", NEWLINE));
     let input = input.split(" ");
 
@@ -104,12 +74,21 @@ fn parse_arguments_to_vector() -> Vec<String> {
 }
 
 fn main() {
-    let input = Input::create();
-    input.to_stdout();
+    println!("{}", GARF_TOP);
+
+    let mut lines = parse_arguments_to_vector();
+    if lines.len() == 0  {
+        lines = parse_input_to_vector();
+    }
+
+    for line in &lines {
+        println!("` m.. {} -m`", line);
+    }
+
+    println!("{}", GARF_BOTTOM);
 }
 
-const GARF_TOP: &str = "
-                ./sdNMNhooo/.          ./oo+smmdhs/`
+const GARF_TOP: &str = "                ./sdNMNhooo/.          ./oo+smmdhs/`
               -hMMMMMmNMNs+:/oo-    -os/..+shdMMMMMNs`
              -NMMM//md`:smsos-`/s/-y+` -sshmyymy:oNNMo
              yMMsdd .dy  `/s.+s. :o` -s++h/`oy..hy`ymh
@@ -156,5 +135,4 @@ const GARF_BOTTOM: &str =
          .+oo:.``  `.:.::/+++ooooo++//:-.`  `:y+./oooo/.     
              +0oo                                ooo/ 
                 ::oooe                        ssdfs:
-                    garfsaygarfsaygarfsaygarfsay
-";
+                    garfsaygarfsaygarfsaygarfsay";
