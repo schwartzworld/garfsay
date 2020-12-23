@@ -3,6 +3,13 @@ name = "garfsay"
 version = "0.1.0"
 authors = ["Ian Schwartz <ian@schwartz.world>"]
 edition = "2018"
+description = "A cowsay clone/variant with an obese feline."
+readme = "README.md"
+homepage = "https://schwartz.world/garfsay"
+repository = "https://github.com/schwartzworld/garfsay"
+license = "MIT"
+keywords = ["CLI", "toy", "fun"]
+categories = ["command-line-utilities"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
