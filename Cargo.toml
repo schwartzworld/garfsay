@@ -1,6 +1,6 @@
 [package]
 name = "garfsay"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Ian Schwartz <ian@schwartz.world>"]
 edition = "2018"
 description = "A cowsay clone/variant with an obese feline."
