@@ -1,3 +1,4 @@
+use std::env;
 use std::io;
 use std::io::Read;
 
@@ -17,24 +18,31 @@ fn parse_input_to_vector() -> Vec<String> {
             break;
         }
 
-        let input = input.replace("\n", &format!(" {} ", NEWLINE));
-        let input = input.split(" ");
+        lines.extend(input_to_center_aligned_vectors(&input));
+    }
+    lines
+}
 
-        let mut line = String::from("");
-        for word in input {
-            if word == NEWLINE {
-                lines.push(center_align(&line));
-                line = String::from("");
-            } else if word.len() + line.len() <= MAX_WIDTH {
-                line = line.to_owned() + " " + word;
-            } else {
-                lines.push(center_align(&line));
-                line = String::from(word);
-            }
-        }
-        if line.len() > 0 {
+fn input_to_center_aligned_vectors(input: &str) -> Vec<String> {
+    let mut lines: Vec<String> = vec![];
+ 
+    let input = input.replace("\n", &format!(" {} ", NEWLINE));
+    let input = input.split(" ");
+
+    let mut line = String::from("");
+    for word in input {
+        if word == NEWLINE {
             lines.push(center_align(&line));
+            line = String::from("");
+        } else if word.len() + line.len() <= MAX_WIDTH {
+            line = line.to_owned() + " " + word;
+        } else {
+            lines.push(center_align(&line));
+            line = String::from(word);
         }
+    }
+    if line.len() > 0 {
+        lines.push(center_align(&line));
     }
     lines
 }
@@ -53,9 +61,24 @@ fn center_align(line: &str) -> String {
     x
 }
 
+fn parse_arguments_to_vector() -> Vec<String> {
+    let args: Vec<String> = env::args().collect();
+
+    if args.len() != 2 {
+        return Vec::<String>::new();
+    } else {
+        return input_to_center_aligned_vectors(&args[1]);
+    }
+}
+
 fn main() {
     println!("{}", GARF_TOP);
-    let lines = parse_input_to_vector();
+
+    let mut lines = parse_arguments_to_vector();
+    if lines.len() == 0  {
+        lines = parse_input_to_vector();
+    }
+
     for line in &lines {
         println!("` m.. {} -m`", line);
     }
