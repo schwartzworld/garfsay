@@ -64,10 +64,11 @@ fn center_align(line: &str) -> String {
 fn parse_arguments_to_vector() -> Vec<String> {
     let args: Vec<String> = env::args().collect();
 
-    if args.len() != 2 {
+    if args.len() < 2 {
         return Vec::<String>::new();
     } else {
-        return input_to_center_aligned_strings(&args[1]);
+        let input = args[1..].join(" ");
+        return input_to_center_aligned_strings(&input);
     }
 }
 
